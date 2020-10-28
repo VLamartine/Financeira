@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+  <title>Calculadoras financeiras</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="index.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand">Calculadoras</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <button class="btn btn-dark" href="#">Seguro</button>
+        <button class="btn btn-dark" href="#">Pricing</button>
+      </div>
+    </div>
+  </nav>
+  <div class="container p-4 text-center">
+    <div id="seguro">
+      <h1>Prêmio em Parcela única anual</h1>
+      <form onsubmit="calculaSeguro(event)">
+        <div class="d-flex justify-content-center">
+          <div class="form-group">
+            <label for="cobertura">Prazo de cobertura em anos</label>
+            <input
+              type="number"
+              name="cobertura"
+              id="cobertura"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group mx-4">
+            <label for="apolice">Valor Apólice (R$)</label>
+            <input
+              type="number"
+              name="apolice"
+              id="apolice"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group">
+            <label for="segurados">Total de segurados</label>
+            <input
+              type="number"
+              name="segurados"
+              id="segurados"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <div class="w-50">
+            <label for="probabilidade">Probabilidade do Sinistro (%)</label>
+            <input
+              type="number"
+              name="probabilidade"
+              id="probabilidade"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-check d-flex flex-column ml-4">
+            <div class="">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="probTaxa"
+                id="aa"
+                value="aa"
+                checked
+              />
+              <label class="form-check-label" for="aa"> ao ano </label>
+            </div>
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="probTaxa"
+                id="am"
+                value="am"
+              />
+              <label class="form-check-label" for="am"> ao mês </label>
+            </div>
+            <div style="text-align: initial">
+              <input
+                class="form-check-input position-initial"
+                type="radio"
+                name="probTaxa"
+                id="ad"
+                value="ad"
+              />
+              <label class="form-check-label" for="ad"> ao dia </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <div class="w-50">
+            <label for="despesaSeguradora"
+              >Despesa da seguradora (R$ ao ano)</label
+            >
+            <input
+              type="number"
+              name="despesaSeguradora"
+              id="despesaSeguradora"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+          <div class="w-50">
+            <label for="rentabilidade">Rentabilidade do Fundo (%)</label>
+            <input
+              type="number"
+              name="rentabilidade"
+              id="rentabilidade"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-check d-flex flex-column ml-4">
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="rentTaxa"
+                id="aaR"
+                value="aa"
+                checked
+              />
+              <label class="form-check-label" for="aaR"> ao ano </label>
+            </div>
+            <div>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="rentTaxa"
+                id="amR"
+                value="am"
+              />
+              <label class="form-check-label" for="amR"> ao mês </label>
+            </div>
+            <div style="text-align: initial">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="rentTaxa"
+                id="adR"
+                value="ad"
+              />
+              <label class="form-check-label" for="adR"> ao dia </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Calcular</button>
+      </form>
+
+      <h5 class="mt-4" id="resultado">
+        O valor da parcela é <b>R$<span id="valorParcela"></span></b>
+      </h5>
+    </div>
+  </div>
+</body>
