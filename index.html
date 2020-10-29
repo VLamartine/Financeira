@@ -26,13 +26,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <button class="btn btn-dark" href="#">Seguro</button>
-        <button class="btn btn-dark" href="#">Pricing</button>
+        <button onclick="showCalculator(event, 'seguro')" id="seguroBtn" class="btn btn-dark active">Seguro</button>
+        <button onclick="showCalculator(event, 'wacc')" id="waccBtn" class="btn btn-dark">CMPC (WACC)</button>
+        <button onclick="showCalculator(event, 'capm')" id="capmBtn" class="btn btn-dark">CAPM</button>
       </div>
     </div>
   </nav>
   <div class="container p-4 text-center">
-    <div id="seguro">
+    <div id="seguro" class="">
       <h1>Prêmio em Parcela única anual</h1>
       <form onsubmit="calculaSeguro(event)">
         <div class="d-flex justify-content-center">
@@ -177,5 +178,116 @@
         O valor da parcela é <b>R$<span id="valorParcela"></span></b>
       </h5>
     </div>
+    <div id="wacc" class="d-none">
+      <h1>Custo Médio Ponderado do Capital</h1>
+      <h3>Weighted Average Cost of Capital</h3>
+      <form onsubmit="calculaWacc(event)">
+        <div class="d-flex justify-content-center">
+          <div class="form-group mr-2">
+            <label for="patrimonio">Patrimonio Líquido (%)</label>
+            <input
+              type="number"
+              name="patrimonio"
+              id="patrimonio"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group ml-2">
+            <label for="divida">Dívida (%)</label>
+            <input
+              type="number"
+              name="divida"
+              id="divida"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          
+        </div>
+        <div class="d-flex justify-content-center">
+          <div class="form-group">
+            <label for="capitalProprio">Capital próprio (%)</label>
+            <input
+              type="number"
+              name="capitalProprio"
+              id="capitalProprio"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group mx-4">
+            <label for="capitalTerceiros">Capital de terceiros (%)</label>
+            <input
+              type="number"
+              name="capitalTerceiros"
+              id="capitalTerceiros"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group">
+            <label for="beneficioFiscal">Benefício fiscal   (%)</label>
+            <input
+              type="number"
+              name="beneficioFiscal"
+              id="beneficioFiscal"
+              class="form-control"
+              step=".02"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-dark">Calcular</button>
+      </form>
+
+      <h5 class="mt-4" id="resultado">
+        WACC = <b><span id="valorWacc"></span></b>
+      </h5>
+    </div>
+    <div id="capm" class="d-none">
+      <h1>Capital Assets Price Model </h1>
+      <form onsubmit="calculaCAPM(event)">
+        <div class="d-flex justify-content-center">
+          <div class="form-group">
+            <label for="portifolio">Retorno esperado do portifólio (%)</label>
+            <input
+              type="number"
+              name="portifolio"
+              id="portifolio"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group mx-4">
+            <label for="livreRisco">Retorno do Portifólio Livre de Risco (%)</label>
+            <input
+              type="number"
+              name="livreRisco"
+              id="livreRisco"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+          <div class="form-group">
+            <label for="beta">Indicador beta</label>
+            <input
+              type="number"
+              name="beta"
+              id="beta"
+              class="form-control"
+              step=".01"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Calcular</button>
+      </form>
+
+      <h5 class="mt-4" id="resultado">
+        CAPM = <b><span id="valorCAPM"></span></b>
+      </h5>
+    </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>  
 </body>
